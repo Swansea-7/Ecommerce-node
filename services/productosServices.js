@@ -10,7 +10,7 @@ const productos = {
     async getProductos () {
 
         //Guardamos en una variable la consulta que queremos generar
-        let sql = 'SELECT * FROM productos'
+        let sql = 'SELECT * FROM productos WHERE activo = 1'
         //Con el archivo de conexion a la base, enviamos la consulta a la misma
         //Ponemos un await porque desconocemos la demora de la misma
         let resultado = await conn.query(sql)
@@ -25,7 +25,7 @@ const productos = {
 
     async getProductosById (id) {
 
-        let sql = 'SELECT * FROM productos WHERE id = ' + id
+        let sql = 'SELECT * FROM productos WHERE activo = 1 AND id = ' + id
         let resultado = await conn.query(sql)
         let response = {error: "No se encontraron registros"}
         if(resultado.code) {
@@ -53,6 +53,32 @@ const productos = {
     async putProductos(body) {
 
         let sql = "UPDATE `productos` SET `nombre`='" + body.nombre + "',`descripcion`='"+ body.descripcion + "',`stock`='" + body.stock + "',`activo`='" + body.activo + "' WHERE id =" + body.id
+        console.log(sql)
+        let resultado = await conn.query(sql)
+        let response = {error: "usuario creado"}
+        if(resultado.code) {
+            response = {error: "Error en la consulta SQL"}
+        }else if (resultado.length > 0) {
+            response = {result: resultado}
+        }
+        return response
+    },
+    async patchProductos(body) {
+
+        let sql = "UPDATE `productos` SET `nombre`='" + body.nombre + "' WHERE id =" + body.id
+        console.log(sql)
+        let resultado = await conn.query(sql)
+        let response = {error: "usuario creado"}
+        if(resultado.code) {
+            response = {error: "Error en la consulta SQL"}
+        }else if (resultado.length > 0) {
+            response = {result: resultado}
+        }
+        return response
+    },
+    async deleteProductos(body) {
+
+        let sql = "UPDATE `productos` SET `activo`=" + body.activo + " WHERE id =" + body.id
         console.log(sql)
         let resultado = await conn.query(sql)
         let response = {error: "usuario creado"}

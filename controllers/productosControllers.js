@@ -60,4 +60,24 @@ module.exports = function (app) {
         
         res.send(response.result)
     })
+    app.patch("/productos", async function(req, res){
+
+        let body = req.body
+
+        const productos = require("./../services/productosServices")
+
+        const response = await productos.patchProductos(body)
+        
+        res.send(response.result)
+    })
+    app.delete("/productos", async function(req, res){
+
+        let body = req.body
+
+        const productos = require("./../services/productosServices")
+
+        const response = await productos.deleteProductos(body)
+        
+        res.send(response.result)
+    })
 }
