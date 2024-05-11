@@ -38,7 +38,7 @@ const productos = {
 
     async postProductos(body) {
 
-        let sql = "INSERT INTO `productos`( `nombre`, `descripcion`, `stock`, `activo`) VALUES ('" + body.nombre + "','" + body.descripcion + "','" + body.stock + "','" + body.activo + "')"
+        let sql = "INSERT INTO `productos`( `nombre`, `precio`,`stock`,  `categoria_id`, `activo`) VALUES ('" + body.nombre + "','" + body.precio + "','" + body.stock + "','" + body.categoria_id + "','" + body.activo + "')"
         console.log(sql)
         let resultado = await conn.query(sql)
         let response = {error: "usuario creado"}

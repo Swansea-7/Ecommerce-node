@@ -8,7 +8,7 @@ const connection 	= mysql.createConnection({
 	user     : "root",
 	password : "",
 	port	 : "3306",
-	database : "restaurante",
+	database : "ecommerce",
 	multipleStatements: true // Habilitar multi-statements
 });
 //con la función connect sabremos si se pudo conectar bien y lo imprimimos en pantalla
