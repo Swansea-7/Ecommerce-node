@@ -1,5 +1,5 @@
 //requerimos el módulo de conexión a la base.
-const mysql      	= require('mysql');
+const mysql = require('mysql');
 //Creamos la variable connection para lograr la conexion
 //Dentro de la función createConnection, agregamos los datos de acceso
 const connection 	= mysql.createConnection({
