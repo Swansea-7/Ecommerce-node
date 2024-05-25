@@ -2,13 +2,15 @@
 const mysql      	= require('mysql');
 //Creamos la variable connection para lograr la conexion
 //Dentro de la función createConnection, agregamos los datos de acceso
+require("dotenv").config()
+console.log(process.env.DB_HOST, process.env.DB_USER,process.env.DB_PASSWORD,process.env.DB_PORT,process.env.DB_DATABASE,)
 const connection 	= mysql.createConnection({
 
-	host     : "localhost",
-	user     : "root",
-	password : "",
-	port	 : "3306",
-	database : "ecommerce",
+	host     : process.env.DB_HOST,
+	user     : process.env.DB_USER,
+	password : process.env.DB_PASSWORD,
+	port	 : process.env.DB_PORT,
+	database : process.env.DB_DATABASE,
 	multipleStatements: true // Habilitar multi-statements
 });
 //con la función connect sabremos si se pudo conectar bien y lo imprimimos en pantalla
