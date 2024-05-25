@@ -1,3 +1,6 @@
+//agrego middleware
+const verificarGet = require('./../middleware/verificarGet')
+const verificarToken = require('./../middleware/verificarToken')
 //creamos el módulo a exportar
 //Al ser llamado en index.js recibe las capacidades de express, para ser utilizado
 module.exports = function (app) {
@@ -29,7 +32,7 @@ module.exports = function (app) {
         res.send(response.result)
     })
 
-    app.get("/productos/:id", async function(req, res){
+    app.get("/productos/:id",verificarGet.verificarNumero, async function(req, res){
 
         let id = req.params.id
 
@@ -40,7 +43,7 @@ module.exports = function (app) {
         res.send(response.result)
     })
 
-    app.post("/productos", async function(req, res){
+    app.post("/productos",  verificarToken.admin, async function(req, res){
 
         let body = req.body
 

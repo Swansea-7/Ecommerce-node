@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+//requerimos el módulo para conectarse a la base de datos
+const mysql = require('mysql')
+//requerimos el archivo donde tenemos configurada la conexion
+const conn = require('../config/conn')
+
+>>>>>>> main
 const jwt = require('jsonwebtoken')
 //creamos la constante a ser exportada
 const login = {
@@ -27,4 +35,8 @@ const login = {
     },  
 }
 //Exportamos el módulo
+<<<<<<< HEAD
 module.exports = login
+=======
+module.exports = login
+>>>>>>> main
