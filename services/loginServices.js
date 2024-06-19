@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-=======
+
+//requerimos el módulo para conectarse a la base de datos
 //requerimos el módulo para conectarse a la base de datos
 const mysql = require('mysql')
 //requerimos el archivo donde tenemos configurada la conexion
 const conn = require('../config/conn')
 
->>>>>>> main
 const jwt = require('jsonwebtoken')
 //creamos la constante a ser exportada
 const login = {
@@ -21,12 +20,13 @@ const login = {
         if(resultado.code) {
             response = {error: "Error en la consulta SQL"}
         }else if (resultado.length > 0) {
-            const { id: sub, name, rol} = { id: resultado[0].id, name: resultado[0].correo, rol: resultado[0].rol}
+            const { id: sub, name, rol, cliente} = { id: resultado[0].id, name: resultado[0].correo, rol: resultado[0].rol, cliente: resultado[0].cliente_id}
             console.log("el rol es::::::::::::::" +  resultado[0].rol)
             const token = jwt.sign({
                 sub,
                 name,
                 rol,
+                cliente,
                 exp: Date.now() + 60 * 1000
             }, secret)
             response = {result: token }
@@ -35,8 +35,5 @@ const login = {
     },  
 }
 //Exportamos el módulo
-<<<<<<< HEAD
 module.exports = login
-=======
-module.exports = login
->>>>>>> main
+

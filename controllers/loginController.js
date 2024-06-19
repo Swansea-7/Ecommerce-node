@@ -12,8 +12,4 @@ module.exports = function (app) {
             res.send({ "token" : response.result}) 
         }
     })
-<<<<<<< HEAD
-};
-=======
 }
->>>>>>> main

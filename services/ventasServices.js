@@ -1,3 +1,4 @@
+
 //requerimos el módulo para conectarse a la base de datos
 const mysql = require('mysql')
 //requerimos el archivo donde tenemos configurada la conexion
